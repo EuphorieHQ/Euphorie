@@ -32,3 +32,13 @@ A valid current conditional request can receive `304` normally.
 
 The older application checkout can contain local backend and Flutter work.
 Do not replace its history or stage those files as part of a website update.
+
+## Policy pages
+
+`frontend/privacy.html` and `frontend/terms.html` cover the informational website and partner inquiries.
+`frontend/task-privacy.html` and `frontend/task-terms.html` preserve the task service commitments.
+The task page links to those task-specific policies.
+All four policy pages use `frontend/legal.css`, with a content version in its URL.
+The Nginx cache include also requires revalidation for policy URLs.
+Update both the served files and their committed source when publishing a policy revision.
+Keep prior versions in deployment backups and provide any notice required for substantive policy changes.
