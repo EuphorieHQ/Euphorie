@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Euphorie | Intelligence for everyday products</title>
+    <meta name="description" content="Euphorie is building a platform for consumer brands to give physical products a voice, character, and memory.">
+    <meta name="theme-color" content="#08080a">
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    
+    <meta property="og:title" content="Euphorie | Intelligence for everyday products">
+    <meta property="og:description" content="Euphorie is building a platform for consumer brands to give physical products a voice, character, and memory.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://euphorie.com/">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+    
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #08080a;
+            --bg-elevated: #0f0f11;
+            --fg: #e6e1db;
+            --fg-dim: #8a847d;
+            --fg-muted: #5c5854;
+            --accent: #b8a9d4;
+            --accent-dim: rgba(184, 169, 212, 0.12);
+            --accent-glow: rgba(184, 169, 212, 0.08);
+            --border: #1e1d1b;
+            --border-subtle: #151413;
+        }
+        html { font-size: 17px; scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        ::selection { background: var(--accent); color: var(--bg); }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+        }
+        .header-wordmark {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.1rem;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            opacity: 0.9;
+            transition: opacity 0.2s ease;
+        }
+        .header-wordmark:hover { opacity: 1; }
+        .header-cta {
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--fg-muted);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            transition: all 0.2s ease;
+        }
+        .header-cta:hover {
+            color: var(--accent);
+            border-color: var(--accent-dim);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem 2rem;
+            position: relative;
+            background: 
+                radial-gradient(ellipse at 30% 20%, var(--accent-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(184, 169, 212, 0.04) 0%, transparent 40%);
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 680px;
+            animation: fadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(28px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .headline {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(2rem, 3.5vw, 2.5rem);
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            color: var(--fg);
+            margin-bottom: 1.25rem;
+        }
+        .subheadline {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--fg-dim);
+            letter-spacing: 0.01em;
+        }
+        .scroll-cue {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        .scroll-cue span {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--fg-muted);
+        }
+        .scroll-cue svg { width: 20px; height: 20px; stroke: var(--fg-muted); opacity: 0.6; }
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(6px); }
+        }
+
+        /* Philosophy */
+        .philosophy {
+            padding: 7rem 2rem 8rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .section-marker {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        .section-marker::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-dim), transparent);
+        }
+        .philosophy p {
+            font-size: 1rem;
+            color: var(--fg-dim);
+            margin-bottom: 1.75rem;
+            line-height: 1.85;
+        }
+        .philosophy .lead {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--fg);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+        }
+        .philosophy em { font-style: normal; color: var(--fg); }
+
+        /* Belief */
+        .belief {
+            padding: 6rem 2rem 7rem;
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .belief-inner { max-width: 640px; margin: 0 auto; }
+        .belief h2 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--fg);
+            margin-bottom: 2.5rem;
+        }
+        .belief p {
+            font-size: 1rem;
+            color: var(--fg-dim);
+            line-height: 1.85;
+            margin-bottom: 1.75rem;
+        }
+        .belief strong { font-weight: 400; color: var(--accent); }
+
+        /* Refuses */
+        .refuses {
+            padding: 6rem 2rem 7rem;
+            background: var(--bg);
+        }
+        .refuses-inner { max-width: 640px; margin: 0 auto; }
+        .refuses h2 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--fg);
+            margin-bottom: 2.5rem;
+        }
+        .refuses ul { list-style: none; }
+        .refuses li {
+            font-size: 0.95rem;
+            padding: 1.15rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--fg-dim);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            line-height: 1.6;
+        }
+        .refuses li::before { content: '—'; color: var(--accent); opacity: 0.6; flex-shrink: 0; }
+        .refuses li:last-child { border-bottom: none; }
+
+        /* Today */
+        .today {
+            padding: 7rem 2rem 8rem;
+            background: var(--bg-elevated);
+            border-top: 1px solid var(--border-subtle);
+        }
+        .today-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+        .today h2 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--fg);
+            margin-bottom: 1.25rem;
+        }
+        .today p {
+            font-size: 1rem;
+            color: var(--fg-dim);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-link {
+            display: inline-block;
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.5;
+            letter-spacing: 0;
+            color: var(--accent);
+            background: transparent;
+            text-decoration: none;
+            padding: 0.4rem 0;
+            border: 0;
+            border-bottom: 1px solid rgba(184, 169, 212, 0.35);
+            border-radius: 0;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .cta-link:hover { color: var(--fg); border-color: var(--accent); }
+        .cta-link:focus-visible { outline: 1px solid var(--accent); outline-offset: 6px; }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: var(--bg);
+            border-top: 1px solid var(--border-subtle);
+        }
+        .footer-sig {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--fg-muted);
+            margin-bottom: 1.5rem;
+        }
+        footer .legal { font-size: 0.72rem; color: var(--fg-muted); letter-spacing: 0.03em; }
+        footer a { color: var(--fg-muted); text-decoration: none; margin: 0 0.6rem; transition: color 0.2s ease; }
+        footer a:hover { color: var(--accent); }
+
+        @media (max-width: 640px) {
+            html { font-size: 16px; }
+            header { padding: 1rem 1.5rem; }
+            .hero { padding: 2rem 1.5rem; }
+            .philosophy, .belief, .refuses, .today { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .philosophy { padding-top: 5rem; padding-bottom: 6rem; }
+            .belief, .refuses, .today { padding-top: 5rem; padding-bottom: 5rem; }
+            .scroll-cue { display: none; }
+        }
+        @supports (padding: env(safe-area-inset-bottom)) {
+            footer { padding-bottom: calc(3rem + env(safe-area-inset-bottom)); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="header-wordmark">Euphorie</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="headline">Intelligence in the air.</h1>
+            <p class="subheadline">Voice, character, and memory for physical products.<br>A platform for consumer brands.</p>
+        </div>
+        <div class="scroll-cue">
+            <span>Scroll</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+        </div>
+    </section>
+
+    <section class="philosophy">
+        <div class="section-marker">A spirit of its own</div>
+        <p class="lead">The objects people love could have a voice, a distinct character, and a memory of their own.</p>
+        <p>Euphorie is building a software platform that helps consumer brands bring intelligence into physical products. Each object would carry a local model and memory, with an experience shaped around its purpose and the person using it.</p>
+        <p>A useful companion needs more than a voice model. It needs <em>personality, chosen context, interactions suited to the object, and dependable service.</em> Building that foundation for every new product takes time and specialist engineering.</p>
+        <p>Euphorie's goal is a shared foundation that brands can reuse across products. Manufacturers keep their identity and customer relationship, with a path to recurring revenue alongside hardware sales.</p>
+    </section>
+
+    <section class="belief">
+        <div class="belief-inner">
+            <h2>Local intelligence. Connected when it matters.</h2>
+            <p><strong>A model and memory on the object.</strong> The intended architecture lets the product carry its own intelligence, independent of a phone. Prototype testing will determine which voice functions run locally and which benefit from cloud processing.</p>
+            <p><strong>Cloud support over time.</strong> Software and model updates, device management, maintenance, and selected connected capabilities would support the experience after the product is sold.</p>
+            <p><strong>One foundation. A distinct identity for every brand.</strong> The planned runtime and development tools will let manufacturers configure characters, connect available sensors and controls, and shape interactions around each object.</p>
+            <p><strong>Start with one useful object.</strong> The first planned prototype is a powered desk companion. It will test conversation quality, memory, response time, power, total cost, and repeat use after the novelty fades.</p>
+        </div>
+    </section>
+
+    <section class="refuses">
+        <div class="refuses-inner">
+            <div class="section-marker">For manufacturers</div>
+            <h2>A platform designed around your product and brand.</h2>
+            <ul>
+                <li>Keep your brand identity and customer relationship</li>
+                <li>Give each product a voice and a recognizable character</li>
+                <li>Remember context the owner chooses to share</li>
+                <li>Connect available sensors and controls to useful interactions</li>
+                <li>Reuse the core software across products with suitable hardware</li>
+                <li>Support devices through managed software and model updates</li>
+                <li>Launch through your existing retail and distribution channels</li>
+                <li>Explore recurring services alongside hardware sales</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="today" id="pilot">
+        <div class="today-inner">
+            <h2>One reference product. A path to a brand pilot.</h2>
+            <p>Euphorie is at concept stage. The first milestone is a powered desk companion prototype with embedded engineering support. Brand interviews and repeat use testing will shape the first feasibility project.</p>
+            <p>The proposed business combines paid integration, a software license per device, and an ongoing manufacturer service contract. Consumer brands with established gift or desk product distribution are invited to discuss a pilot.</p>
+            <a href="mailto:euphorieinc@gmail.com?subject=Euphorie%20pilot%20inquiry" class="cta-link">Get in touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-sig">A spirit of its own.</p>
+        <p class="legal">&copy; 2026 Euphorie, Inc. &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="/terms.html">Terms</a></p>
+    </footer>
+</body>
+</html>
